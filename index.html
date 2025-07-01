@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>结业会</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .container {
+            display: flex;
+            flex-direction: column; /* 从上到下排列 */
+            gap: 20px; /* 设置行之间的间距 */
+            padding-top: 50px; /* 距离页面顶部的距离 */
+            padding-bottom: 50px; /* 离页面底部的距离 */
+            align-items: center; /* 水平居中 */
+        }
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px; /* 设置列表项之间的间距 */
+        }
+        .item {
+            border: 1px solid #ccc; /* 添加边框以便区分 */
+            padding: 5px; /* 添加内边距 */
+            background-color: #f9f9f9; /* 添加背景颜色 */
+            text-align: center; /* 文字居中 */
+            width: 100px; /* 设置宽度 */
+        }
+        .congratulation {
+            font-size: 310px;
+            font-weight: bold;
+            color: #4caf50;
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="list-container" class="container">
+        <div class="row" id="top-row"></div>
+        <div class="congratulation">结业快乐</div>
+        <div class="row" id="bottom-row"></div>
+    </div>
+
+    <script>
+        // 定义字符串列表
+        const stringList = [
+            "陈泓允", "郑裕桐", "陈逸钏", "佘欣", "翁沐祺",
+            "林子樾", "陈泽轩", "高忆博", "陈加一", "刘梓凯",
+            "吴泽桐", "李烨恩", "刘思瀚", "郭子沛", "陈博樾",
+            "郭柄熙", "陈轩禹", "杨澌颖", "朱雄培", "陈明燿",
+            "蔡沛宇", "陈洵跃", "张家磊", "曾哲涵", "洪恒艺",
+            "吴文钰", "谢雅博", "蔡梓淳", "王思琪", "沈潼欣",
+            "刘梓琳", "庄思媛", "郭睿圻", "沈烨儿", "陈悦涵",
+            "陈雅昕", "蔡可欣", "鄞欣怡", "吴梦萱", "杨悦萱",
+            "许格萱", "陈思涵", "姚恩临", "陈培泓", "郑可淇",
+            "沈雅煊", "曾童煊", "刘妤熙", "蔡芯潼", "姜梦瑶"
+        ];
+
+        // 获取容器元素
+        const topRow = document.getElementById("top-row");
+        const bottomRow = document.getElementById("bottom-row");
+
+        // 随机选择字符串并填充到每行
+        function fillRows() {
+            const shuffledStrings = stringList.sort(() => Math.random() - 0.5); // 随机打乱字符串列表
+
+            // 填充顶部行
+            fillRow(topRow, shuffledStrings.slice(0, 10));
+            // 填充底部行
+            fillRow(bottomRow, shuffledStrings.slice(10, 20));
+        }
+
+        // 填充单行的函数
+        function fillRow(row, strings) {
+            while (row.firstChild) {
+                row.removeChild(row.firstChild); // 清空行
+            }
+            strings.forEach((str) => {
+                const itemDiv = document.createElement("div");
+                itemDiv.classList.add("item");
+                itemDiv.textContent = str;
+                row.appendChild(itemDiv);
+            });
+        }
+
+        // 随机改变字体颜色
+        function changeColors() {
+            const items = document.querySelectorAll(".item");
+            items.forEach((item) => {
+                const randomColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+                item.style.color = randomColor;
+            });
+        }
+
+        // 初始化填充行
+        fillRows();
+
+        // 每 1 秒随机改变字体颜色
+        setInterval(changeColors, 1000);
+
+        // 每 5 秒重新随机填充行
+        setInterval(fillRows, 2000);
+    </script>
+</body>
+</html>
