@@ -32,9 +32,9 @@
             width: 100px; /* 设置宽度 */
         }
         .congratulation {
-            font-size: 310px;
+            font-size: 160px;/*310*/
             font-weight: bold;
-            color: #cf601b;
+            color: #fbff00cd;
             text-align: center;
             margin-top: 20px;
             margin-bottom: 20px;
@@ -42,15 +42,21 @@
         p{
 text-align: center; /* 文字居中 */
         }
+        body {
+  background-image: url("background.jpg"); /* 设置背景图片 */
+  background-repeat: no-repeat; /* 背景图片不重复 */
+  background-size: cover; /* 背景图片覆盖整个页面 */
+  background-attachment: fixed; /* 背景图片固定，滚动页面时背景不动 */
+}
     </style>
 </head>
 <body>
     <div id="list-container" class="container">
         <div class="row" id="top-row"></div>
-        <div class="congratulation">结业快乐</div>
-        <p>测试版(beta)</p>
+        <div class="congratulation">结业启新程<br/>未来共奋进</div>
+        <!--<p>测试版(beta)</p>
+        <p>Copyright (c) 2025 chwmq. All rights reserved.</p>-->
         <div class="row" id="bottom-row"></div>
-        <p>Copyright (c) 2025 chwmq. All rights reserved.</p>
     </div>
 
     <script>
